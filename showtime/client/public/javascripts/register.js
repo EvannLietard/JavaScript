@@ -6,41 +6,44 @@ const setup = () => {
   username = document.getElementById('username');
   userlogin = document.getElementById('userlogin');
   userpassword = document.getElementById('userpassword');
-  document.getElementById('buttonregister').addEventListener('click', () => register(false));
-  console.log(`username : ${username.value}`)
-  console.log(`login : ${userlogin.value}`)
-  console.log(`password : ${userpassword.value}`)
+  document.getElementById('register').addEventListener('click', () => register(userlogin.value==="admin"));
 }
 window.addEventListener('DOMContentLoaded', setup);
 
-const register =  async admin => {
+const register = async admin => {
+  console.log(`Value of username: ${username.value}`);
+  console.log(`Value of userlogin: ${userlogin.value}`);
+  console.log(`Value of userpassword: ${userpassword.value}`);
+  
   const userData = {
-                     name : username.value,
-                     login : userlogin.value,
-                     password : userpassword.value,
-                     admin : admin || false
-                   };
-  console.log(`username : ${userData.name}`)
-  console.log(`login : ${userData.login}`)
-  console.log(`password : ${userData.password}`)
-  console.log(`data : ${userData.admin}`);
+    username : username.value,
+    login : userlogin.value,
+    password : userpassword.value,
+    admin : admin || false
+  };
+  
+  console.log(`Data in userData: ${JSON.stringify(userData)}`);
+  console.log(`Value of admin: ${userData.admin}`);
+  
   const body = JSON.stringify(userData);
   const requestOptions = {
-                         method :'POST',
-                         headers : { "Content-Type": "application/json" },
-                         body : body
-                       };
+    method :'POST',
+    headers : { "Content-Type": "application/json" },
+    body : body
+  };
+  
   const response = await fetch(`/access/register`, requestOptions);
   if (response.ok) {
     const createdUser = await response.json();
-    console.log(`user registered : ${JSON.stringify(createdUser)}`);
-    window.location.href = '/login';
+    console.log(`User registered: ${JSON.stringify(createdUser)}`);
+    window.location.href = '/access/login';
   }
   else {
     const error = await response.json();
-    console.log(`erreur : ${error.message}`);
-    document.getElementById('problem').textContent = `erreur : ${error.message}`;
+    console.log(`Error: ${error.message}`);
+    document.getElementById('problem').textContent = `Error: ${error.message}`;
   }
 }
 
-const adminRegister = () => register(true);
+
+

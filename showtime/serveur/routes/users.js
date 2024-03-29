@@ -1,9 +1,15 @@
 var express = require('express');
 var router = express.Router();
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+const authMiddleware = require('../middleware/auth.middleware');
+
+
+// import controller for index
+const userController = require('../controllers/user.controller');
+
+router.get('/', userController.home );
+router.get('/me', authMiddleware.validToken, userController.me );
+
+
 
 module.exports = router;

@@ -10,4 +10,4 @@ const ticketSchema = new mongoose.Schema({
   const dbConnection = require('../controllers/db.controller');
   
   const Ticket = dbConnection.model('Ticket', ticketSchema);
-  module.exports = Ticket;
+  module.exports.model = Ticket;

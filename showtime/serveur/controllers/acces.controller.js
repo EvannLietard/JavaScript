@@ -1,5 +1,5 @@
 const bcrypt = require('bcrypt');
-const User = require('../models/user.model');
+const User = require('../models/user.model').model;
 
 const jwt = require('jsonwebtoken');
 const jwtConfig = require('../config/jwt.config');
@@ -8,7 +8,7 @@ const jwtConfig = require('../config/jwt.config');
 /*
 * fournit en résultat une vue qui gère le formulaire d'inscription
 */
-const registerForm = (_,res) => res.redirect('register.html');
+const registerForm = (_,res) => res.redirect('/register.html');
 /*
 * crée l'entrée correspondant à l'utilisateur à partir des informations fournies
 * le mot de passe est crypté avant d'être stocké en base
@@ -18,6 +18,11 @@ const register = async (req, res) => {
   const salt = await bcrypt.genSalt();
   const hashPassword = await bcrypt.hash(req.body.password, salt);
 
+console.log(`Received data:`);
+  console.log(`- Username: ${req.body.username}`);
+  console.log(`- Login: ${req.body.login}`);
+  console.log(`- Password: ${req.body.password}`);
+  console.log(`- Admin: ${req.body.admin}`);
   console.log(`register , body.admin : ${req.body.admin}`);
 
   try {
@@ -39,7 +44,7 @@ const register = async (req, res) => {
 /*
 * fournit en résultat une vue qui gère le formulaire d'identification
 */
-const loginForm = (_,res) => res.redirect('login.html'); 
+const loginForm = (_,res) => res.redirect('/login.html'); 
 /*
 * cherche s'il existe un utilisateur correspondant aux identifiants/mot de passe fournis
 * si c'est le cas un jeton JWT est créé et renvoyé
@@ -67,7 +72,7 @@ const login = async (req, res) => {
   }
   catch (err) {
     console.log(`pb connexion ${err.message}`);
-    res.status(500).redirect('register');
+    res.status(500).redirect('/access/register');
   }
 }
 
@@ -81,3 +86,4 @@ module.exports.loginForm = loginForm;
 module.exports.register = register;
 module.exports.registerForm = registerForm;
 module.exports.logout = logout;
+

@@ -4,7 +4,7 @@ let userpassword;
 const setup = () => {
   userlogin = document.getElementById('userlogin');
   userpassword = document.getElementById('userpassword');
-  document.getElementById('buttonlogin').addEventListener('click', login);
+  document.getElementById('login').addEventListener('click', login);
 }
 window.addEventListener('DOMContentLoaded', setup);
 
