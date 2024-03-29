@@ -40,17 +40,17 @@ Ce projet vise à créer une application permettant la gestion de spectacles et 
 ### Installation
 
 1. Cloner le dépôt : `git clone `
-2. Installer les dépendances : `npm install`
+2. Installer les dépendances dans serveur et dans client: `npm install`
 
 ### Configuration de la Base de Données
 
-- Lancer MongoDB : `mongod --dbpath data/`
+- Lancer MongoDB depuis serveur : `mongod --dbpath data/`
 - L'application se connectera automatiquement à la base de données définie dans `config/db.js`.
 
 ## Utilisation
 
 1. Lancer le serveur : `nodemon`
-2. Accéder à l'application depuis un navigateur : `http://localhost:3000`
+2. Accéder à l'application depuis un navigateur : `http://localhost:3000/login`
 
 ## API
 
