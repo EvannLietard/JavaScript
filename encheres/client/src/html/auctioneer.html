@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./public/style/style.css" rel="stylesheet" type="text/css">
+  <script src="/socket.io/socket.io.js"></script>
+  <title>Page commissaire-prisseur</title>
+</head>
+<body>
+  
+    <div id="on" style="display: none;">
+
+        <h1>Commissaire priseur</h1>
+        <header>
+            <p id="status">Vous êtes le commissaire priseur.</p>
+        </header>
+
+            <p>Objet aux enchères <input type="text" id="objet"  /></p>
+            <p>Prix de départ : <input type="number" id="price" value="0" min="0"/></p>
+            <p>Montant actuel enchère <span id="montant"></span> euros</p>
+            <div id="button">
+                <button id="start" type="button"><img src="../public/images/png-clipart-pixel-art-start-button-text-logo-thumbnail.png" width="100" height="100"></button>
+                <button id="end" type="button"><img src="../public/images/auction_hammer.png" width="100" height="100"></button>
+            </div>
+    </div>
+    <div id="off" style="display: none;">
+        <p>Connection refusée, il y a déjà un commissaire priseur</p>
+    </div>
+    
+    <footer>
+        <a href="/">Retour à l'accueil</a>
+</body>
+</html>

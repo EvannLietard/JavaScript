@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="./public/style/style.css" rel="stylesheet" type="text/css">
+  <script src="/socket.io/socket.io.js"></script>
+  <title>Page Enchère</title>
+</head>
+<body>
+  <h1>Page Enchère</h1>
+  <div>
+  <p id="message">Il n'a pour l'instant aucunes enchere </p>
+  </div>
+  <div id="enchere">
+    <p>Mis au enchère : <span id="change">en attente</span>
+    <br>Prix actuel :<span id="prix">-</span>euros</p><br>
+  <div id="button"> 
+    <button id="priceButton1"> 5 € </button>&nbsp
+    <button id="priceButton2"> 10 € </button>&nbsp
+    <button id="priceButton3"> 100 € </button>&nbsp
+  </div>
+  <footer>
+    <a href="/">Retour à l'accueil</a>
+  </footer>
+
+</body>
+</html>
