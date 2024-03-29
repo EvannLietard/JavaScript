@@ -49,7 +49,7 @@ Ce projet vise à créer une application permettant la gestion de spectacles et 
 
 ## Utilisation
 
-1. Lancer le serveur : `npm start`
+1. Lancer le serveur : `nodemon`
 2. Accéder à l'application depuis un navigateur : `http://localhost:3000`
 
 ## API
